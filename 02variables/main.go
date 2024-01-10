@@ -50,4 +50,29 @@ func main() {
 	fmt.Println(LoginTokken)
 	fmt.Printf("The type of variable is: %T \n ", LoginTokken)
 
+	//There are two aliases --> byte & rune
+
+	//byte --> A byte takes 8 bits of storage. In Go, it is equivalent to the data type uint8. It is used to represent an ASCII character.
+	ar b1 byte = 97
+    var b2 byte = 'b'
+ 
+    // Printing without character formatting
+    fmt.Println(b1)
+    fmt.Println(b2)
+
+    // Printing with character formatting
+    fmt.Printf("%c\n", b1)
+    fmt.Printf("%c\n", b2)
+
+	
+	// rune --> A rune takes 4 bytes or 32 bits for storage. It is an int32 equivalent. Runes are used to represent the Unicode characters, which is a broader set than ASCII characters.
+	// These Unicode characters are encoded in the UTF-8 format.
+	a1 := 97
+    a2 := 'b'
+    a3 := '♬'
+
+    // Printing the value, unicode equivalent and type of the variable
+    fmt.Printf("Value: %c, Unicode: %U, Type: %s\n", a1, a1, reflect.TypeOf(a1))
+    fmt.Printf("Value: %c, Unicode: %U, Type: %s\n", a2, a2, reflect.TypeOf(a2))
+    fmt.Printf("Value: %c, Unicode: %U, Type: %s\n", a3, a3, reflect.TypeOf(a3))
 }
