@@ -49,3 +49,9 @@ aliases --> Alias is a second name for an exising type and it's just like replac
 2. rune --> A rune takes 4 bytes or 32 bits for storage. It is an int32 equivalent. Runes are used to represent the Unicode characters, which is a broader set than ASCII characters. These Unicode characters are encoded in the UTF-8 format. 
 
 ==> %c is used to print character
+
+==>if we just initialise a type then it is assigned 0(for integer), it is not assigned a garbage value.
+
+-->inside a method walurus operator :=  can be used but not in the global scope
+
+ 
