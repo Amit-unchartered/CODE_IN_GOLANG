@@ -14,3 +14,29 @@ YES AND NO
 -->dont have overloading.
 
 ==>lexer does a lot of work, it autocompletes our code.
+->What is the reason for language designers to even start working on getting rid of tokens like semicolons? The answer is quite simple. It’s all about readability. The less artefacts code has, the easier it’s to work with. It’s important since once written piece of code will be probably read many times by different people.
+
+Grammar uses semicolons as productions terminators. Since the goal is to free programmer from typing these semicolons, there must be a way to automatically inject them. This is what Go’s lexer is doing. Semicolon is added when line’s last token is one of:
+
+    an identifier
+    an integer, floating-point, imaginary, rune, or string literal
+    one of the keywords break, continue, fallthrough, or return
+    one of the operators and delimiters ++, --, ), ], or }
+
+fmt.Println --> P is capital in this, this Println function was exported publicaly for open use
+
+-->Variable should be known in advance.
+
+-->everything in golang is a type.
+
+==>TYPES:-
+STRING
+BOOL
+INTEGER --> uint8 uint64 int8 int64 uintptr (aliases are involved too)
+FLOATING --> float32 float64
+COMPLEX
+ARRAY
+SLICES
+MAPS
+STRUCTS
+POINTERS
