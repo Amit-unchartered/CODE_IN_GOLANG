@@ -16,6 +16,7 @@ func main() {
 	input, _ := reader.ReadString('\n')
 	fmt.Println("thanks for rating : ", input)
 
+	//input is a string so we are converting it to a integer
 	numRating, err := strconv.ParseFloat(strings.TrimSpace(input), 64)
 	if err != nil {
 		fmt.Println(err)

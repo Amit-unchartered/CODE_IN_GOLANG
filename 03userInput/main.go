@@ -14,6 +14,8 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Println("Enter rating for our pizza: ")
 
+	//we are treating error as a variable in go, so either we will be getting input or error
+
 	//I need to store the thing reader reads here for me
 	//here comes comma ok syntax
 
