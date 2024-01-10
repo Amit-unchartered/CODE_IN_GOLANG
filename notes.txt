@@ -54,4 +54,30 @@ aliases --> Alias is a second name for an exising type and it's just like replac
 
 -->inside a method walurus operator :=  can be used but not in the global scope
 
- 
+TIME:- for formating the time in proper way, we need to use these values only
+fmt.Println(createdDate.Format("01-02-2006 Monday January 15.04.05"))
+
+==>Making executables for linux, windows, darwin.
+GOOS="darwin" go build
+GOOS="linux" go build
+GOOS="windows" go build
+
+MEMORY MANAGEMENT IN GO:
+==>memory allocation and deallocation happens automatically.
+new()
+allocate memory but no INIT
+you will get a memory address
+zeroed storage --> we can't put data inside it
+
+make()
+Allocate memory and INIT
+you will get a memory address
+non-zeroed storage --> we can put data inside it
+
+GARBAGE COLLECTION OVERVIEW:-
+
+1. The Go language takes responsibility for arranging the storage of Go values; in most cases, a Go developer need not care about where these values are stored, or why, if at all. In practice, however, these values often need to be stored in computer physical memory and physical memory is a finite resource. Because it is finite, memory must be managed carefully and recycled in order to avoid running out of it while executing a Go program. It's the job of a Go implementation to allocate and recycle memory as needed.
+
+2.Another term for automatically recycling memory is garbage collection. At a high level, a garbage collector (or GC, for short) is a system that recycles memory on behalf of the application by identifying which parts of memory are no longer needed. The Go standard toolchain provides a runtime library that ships with every application, and this runtime library includes a garbage collector.
+
+3.The GOGC variable sets the initial garbage collection target percentage. A collection is triggered when the ratio of freshly allocated data to live data remaining after the previous collection reaches this percentage. The default is GOGC=100. Setting GOGC=off disables the garbage collector entirely.  
