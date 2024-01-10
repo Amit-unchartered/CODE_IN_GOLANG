@@ -40,3 +40,12 @@ SLICES
 MAPS
 STRUCTS
 POINTERS
+
+uint will have only non negative numbers. BUT int will have both positive and negative numbers.
+
+aliases --> Alias is a second name for an exising type and it's just like replacing all occurences of int1 with int.
+1. byte --> A byte takes 8 bits of storage. In Go, it is equivalent to the data type uint8. It is used to represent an ASCII character.
+
+2. rune --> A rune takes 4 bytes or 32 bits for storage. It is an int32 equivalent. Runes are used to represent the Unicode characters, which is a broader set than ASCII characters. These Unicode characters are encoded in the UTF-8 format. 
+
+==> %c is used to print character
