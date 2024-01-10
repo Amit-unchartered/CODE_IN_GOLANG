@@ -1,1 +1,16 @@
 -->Golang is compiled, JAVA is not a compiled language, it is in between, it gives some intermediate binaries and expects us to have the virtual machine installed called JVM.
+-->go tool can run file directly, without VM.
+-->Executables are different for OS
+
+-->WHAT IS GOLANG USED FOR?
+system apps to web apps
+it is already in production
+
+-->Don't bring baggage with this language, the purpose of making this languge was entirely different
+
+==>IS GO object orientee?
+YES AND NO
+-->it don't have classes, it have structs(structs are alternatives of classes)_.
+-->dont have overloading.
+
+==>lexer does a lot of work, it autocompletes our code.
