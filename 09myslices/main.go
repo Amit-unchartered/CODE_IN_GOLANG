@@ -17,7 +17,7 @@ func main() {
 	fmt.Printf("the type of fruitList is: %T\n ", fruitList)
 	fmt.Println("the fruits in the list are:", fruitList)
 
-	//array was very precisely defined whether 3 or 4 vlaues can be taken into, we can't take
+	//array was very precisely defined whether 3 or 4 values can be taken into, we can't take
 	//as many values as we like BUT we can can add as many values as we like in slice as it
 	//automatically expands memory for us.
 
