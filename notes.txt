@@ -1,0 +1,1 @@
+-->Golang is compiled, JAVA is not a compiled language, it is in between, it gives some intermediate binaries and expects us to have the virtual machine installed called JVM.
