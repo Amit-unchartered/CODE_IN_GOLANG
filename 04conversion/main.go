@@ -15,6 +15,8 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 	input, _ := reader.ReadString('\n')
 	fmt.Println("thanks for rating : ", input)
+	//we treat error as a variable in golang.
+	//either we will get the input or we will get the error.
 
 	//input is a string so we are converting it to a integer
 	numRating, err := strconv.ParseFloat(strings.TrimSpace(input), 64)
