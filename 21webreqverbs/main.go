@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"strings"
 )
 
@@ -16,7 +17,9 @@ func main() {
 
 	//PerformGetRequest()
 
-	PerformPostJSONrequest()
+	//PerformPostJSONrequest()
+
+	PerformPostFormrequest()
 
 }
 
@@ -71,4 +74,26 @@ func PerformPostJSONrequest() {
 
 	fmt.Println(string(content))
 
+}
+
+func PerformPostFormrequest() {
+	const myurl string = "http://localhost:8000/postform"
+
+	//formdata
+
+	data := url.Values{} //create a empty key value pair
+
+	//now add data into it using add functionality
+	data.Add("firstname", "amit")
+	data.Add("midname", "kumar")
+	data.Add("lastname", "agrawal")
+
+	response, err := http.PostForm(myurl, data) //this issues special post request that is url encoded.
+
+	if err != nil {
+		panic(err)
+	}
+
+	content, _ := io.ReadAll(response.Body)
+	fmt.Println(string(content))
 }
