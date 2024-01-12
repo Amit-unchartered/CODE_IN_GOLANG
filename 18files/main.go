@@ -22,7 +22,7 @@ func main() {
 
 	checkNilErr(err)
 	fmt.Println("the length is: ", length)
-	defer file.Close() //defer is recommended since if we wanted to write code below file close() then, we would have to moov the file close() below
+	defer file.Close() //defer is recommended since if we wanted to write code below file.close() then, we would have to moov the file.close() below
 
 	readfile("./mylcogofile.txt")
 }
@@ -36,7 +36,7 @@ func readfile(filename string) {
 	fmt.Println("Text Data inside the file is: ", databyte)
 
 	//to handle this type of date we will wrap data type around string
-	fmt.Println("The text inside the file is: ", databyte)
+	fmt.Println("The text inside the file is: ", string(databyte))
 }
 
 // to reduce lines of code for checking error we can do
