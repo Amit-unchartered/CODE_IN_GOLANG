@@ -81,3 +81,22 @@ GARBAGE COLLECTION OVERVIEW:-
 2.Another term for automatically recycling memory is garbage collection. At a high level, a garbage collector (or GC, for short) is a system that recycles memory on behalf of the application by identifying which parts of memory are no longer needed. The Go standard toolchain provides a runtime library that ships with every application, and this runtime library includes a garbage collector.
 
 3.The GOGC variable sets the initial garbage collection target percentage. A collection is triggered when the ratio of freshly allocated data to live data remaining after the previous collection reaches this percentage. The default is GOGC=100. Setting GOGC=off disables the garbage collector entirely.  
+
+NPM --> node package manager --> we want to use the code written by someone on other side, then we need to use package manager
+chocolatey --> windows
+homebrew --> mac
+python --> pip installed
+
+Why it came into existence?
+-->let's say we want to create a file of users having unique identifier
+1.Download the code from github and configure it. 
+2.Set standards and use npm install --> we will follow this
+
+-->npm help -> don't use it instead use docs
+
+-->npm uses special tpye of versioning i.e semantic versioning.
+Code status	                                      Stage	          Rule	                                                            Example version
+1. First release	                            New product	    Start with 1.0.0	                                                 1.0.0
+2. Backward compatible bug fixes	            Patch release	Increment the third digit	                                         1.0.1
+3. Backward compatible new features	            Minor release	Increment the middle digit and reset last digit to zero	             1.1.0
+4. Changes that break backward compatibility	Major release	Increment the first digit and reset middle and last digits to zero	 2.0.0
