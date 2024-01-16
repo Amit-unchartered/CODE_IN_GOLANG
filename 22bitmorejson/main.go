@@ -12,7 +12,7 @@ type course struct {
 	Platform string   `json:"website"`
 	Password string   `json:"-"`              //I don't want this field to be reflected to whoever is consuming my API.
 	Tags     []string `json:"tags,omitempty"` //omitempty --> if the value is null or nil, don't throw the field at all.
-	//between tags and omit empty there should be no gap otherwise it will throw an error.
+	//between tags and omitempty there should be no gap otherwise it will throw an error.
 }
 
 //we are going to work for the encoding of the JSON, this means i have a data(arrays, slices etc.) and i want to convert it into valid JSON

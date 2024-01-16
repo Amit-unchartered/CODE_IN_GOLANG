@@ -8,6 +8,9 @@ import (
 	"github.com/gorilla/mux"
 )
 
+//Gorilla Mux is a popular and flexible HTTP routing package for Golang, widely used in web applications and RESTful APIs. It provides advanced routing features,
+//middleware support, and optimized performance, making it a solid choice for many projects
+
 //require github.com/gorilla/mux v1.8.1 // indirect --> indirect is because this link is not used inside the main.go file or any other file
 //once it is used it will go automatically.
 
