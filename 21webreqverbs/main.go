@@ -38,8 +38,8 @@ func PerformGetRequest() {
 
 	//BETTER WAY /////////////////////////////////////////////////////////////
 	var responseString strings.Builder
-	content, _ := io.ReadAll(response.Body) //the content is in the
-	bytecount, _ := responseString.Write(content)
+	content, _ := io.ReadAll(response.Body)       //the content is in the byte format
+	bytecount, _ := responseString.Write(content) //returns the length of the string.
 
 	fmt.Println("Bytecount is: ", bytecount)
 	fmt.Println("The data is: ", responseString.String())
@@ -89,6 +89,15 @@ func PerformPostFormrequest() {
 	data.Add("lastname", "agrawal")
 
 	response, err := http.PostForm(myurl, data) //this issues special post request that is url encoded.
+	// URL encoding converts characters into a format that can be transmitted over the Internet.
+
+	// URLs can only be sent over the Internet using the ASCII character-set.
+
+	// Since URLs often contain characters outside the ASCII set, the URL has to be converted into a valid ASCII format.
+
+	// URL encoding replaces unsafe ASCII characters with a "%" followed by two hexadecimal digits.
+
+	// URLs cannot contain spaces. URL encoding normally replaces a space with a plus (+) sign or with %20.
 
 	if err != nil {
 		panic(err)

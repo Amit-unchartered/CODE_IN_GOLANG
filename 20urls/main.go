@@ -15,9 +15,9 @@ func main() {
 	result, _ := url.Parse(myurl) //might return the result, or return the error.
 
 	//this result contains so much information about the url
-	fmt.Println(result.Scheme) // -->https
-	fmt.Println(result.Host)   // -->
-	fmt.Println(result.Path)
+	fmt.Println(result.Scheme)   // -->https
+	fmt.Println(result.Host)     // -->lco.dev:3000
+	fmt.Println(result.Path)     // --> /learn
 	fmt.Println(result.Port())   //port is not a prpoperty, it is a method
 	fmt.Println(result.RawQuery) // the queries that i have passed in the URL.
 	//to JS developers this queries are called as params or parameters.
