@@ -24,7 +24,7 @@ func main() {
 	fmt.Println("welcome to mod in golang")
 	greeter()
 	r := mux.NewRouter()
-	r.HandleFunc("/", serveHome).Methods("GET")
+	r.HandleFunc("/", serveHome).Methods("GET") //servehome is responsible for handling this situation.
 
 	//running a server
 	//http.ListenAndServe(":4000", r) --> this may throw an error
