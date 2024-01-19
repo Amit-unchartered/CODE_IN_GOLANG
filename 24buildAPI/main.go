@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"math/rand"
 	"net/http"
 	"strconv"
@@ -42,7 +43,23 @@ func (c *Course) IsEmpty() bool {
 }
 
 func main() {
+	fmt.Println("API - LearnCodeOnline.in")
+	r := mux.NewRouter()
 
+	//seeding
+	courses = append(courses, Course{CourseId: "2", CourseName: "React-JS", CoursePrice: 299, Author: &Author{Fullname: "Amit Kumar Agrawal", Website: "lco.dev"}})
+	courses = append(courses, Course{CourseId: "4", CourseName: "MERN-stack", CoursePrice: 199, Author: &Author{Fullname: "Amit Kumar Agrawal", Website: "go.dev"}})
+
+	//routing
+	r.HandleFunc("/", serveHome).Methods("GET")
+	r.HandleFunc("/courses", getAllCourses).Methods("GET")
+	r.HandleFunc("/course/{id}", getOneCourse).Methods("GET")
+	r.HandleFunc("/course", createOneCourse).Methods("POST")
+	r.HandleFunc("/course/{id}", updateOneCourse).Methods("PUT")
+	r.HandleFunc("/course/{id}", deleteOneCours).Methods("DELETE")
+
+	//listen to a port
+	log.Fatal(http.ListenAndServe(":4000", r))
 }
 
 //controllers - file
@@ -103,6 +120,9 @@ func createOneCourse(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	//TODO: check only if the title is duplicate
+	//loop, title matches with course.coursename, JSON
+
 	//generate unique id, of type string
 	//append course into courses
 	rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -137,6 +157,19 @@ func updateOneCourse(w http.ResponseWriter, r *http.Request) {
 	//TODO: send a responde when id is not found.
 }
 
-func deleteOneCours(w http.ResponseWriter, r http.Response) {
+func deleteOneCours(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("delete One Course")
+	w.Header().Set("Content-type", "application/json")
 
+	params := mux.Vars(r)
+
+	//loop, id , remove(index, index+1)
+
+	for index, course := range courses {
+		if course.CourseId == params["id"] {
+			courses = append(courses[:index], courses[index+1:]...)
+			json.NewEncoder(w).Encode("The id have been deleted")
+			break
+		}
+	}
 }
