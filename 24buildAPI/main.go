@@ -3,7 +3,12 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"math/rand"
 	"net/http"
+	"strconv"
+	"time"
+
+	"github.com/gorilla/mux"
 )
 
 // we want to create a similar looking learncodeOnline backend API, we need to create a feature that allows
@@ -32,7 +37,8 @@ var courses []Course
 
 // middleware, helper - file i.e this goes inside a file
 func (c *Course) IsEmpty() bool {
-	return c.CourseId == "" && c.CourseName == "" //i dont want to proceed if any of them are empty, i want to proceed if only both of them are filled up.
+	// return c.CourseId == "" && c.CourseName == "" //i dont want to proceed if any of them are empty, i want to proceed if only both of them are filled up.
+	return c.CourseName == "" //i dont want to proceed if any of them are empty, i want to proceed if only both of them are filled up.
 }
 
 func main() {
@@ -55,4 +61,82 @@ func getAllCourses(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(courses)
 }
 
-//seeding in DB --> Database seeding is populating a database with an initial set of data. It's common to load seed data such as initial user accounts or dummy data upon initial setup of an application.
+// seeding in DB --> Database seeding is populating a database with an initial set of data. It's common to load seed data such as initial user accounts or dummy data upon initial setup of an application.
+func getOneCourse(w http.ResponseWriter, r *http.Request) {
+	//i need to search for an unique id corresponding to the course -- task1
+	//then loop through the array of all courses then find the course corresponding to the unique ID.
+	fmt.Println("Get One Course")
+	w.Header().Set("Content-type", "application/json")
+
+	//grab id from request
+	params := mux.Vars(r)
+
+	// loop through courses, find matching id and return the response
+	for _, course := range courses {
+		if course.CourseId == params["id"] {
+			json.NewEncoder(w).Encode(course)
+			return
+		}
+	}
+	//the case when i don't found anything
+	json.NewEncoder(w).Encode("No course found with given id")
+	return
+}
+
+func createOneCourse(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Create One Course")
+	w.Header().Set("Content-type", "application/json")
+
+	//what if: body is empty
+	if r.Body == nil {
+		json.NewEncoder(w).Encode("Please send some data")
+
+	}
+
+	//what about - {}
+
+	var course Course
+	_ = json.NewDecoder(r.Body).Decode(&course)
+
+	if course.IsEmpty() {
+		json.NewEncoder(w).Encode("NO data inside JSON")
+		return
+	}
+
+	//generate unique id, of type string
+	//append course into courses
+	rand.New(rand.NewSource(time.Now().UnixNano()))
+	//course.CourseId = rand.Intn(100) // this returns int BUT the course.CourseId expects string as output
+	course.CourseId = strconv.Itoa(rand.Intn(100))
+	courses = append(courses, course)
+	json.NewEncoder(w).Encode(course) //it automatically stops the methods as it senses the response.
+	return
+}
+
+func updateOneCourse(w http.ResponseWriter, r *http.Request) {
+	//we will loop through the array,and once we reach the ID we will slice of that value.
+	fmt.Println("Update One Course")
+	w.Header().Set("Content-type", "application/json")
+
+	// first - grab id from request
+	params := mux.Vars(r)
+
+	//loop, id , remove, add with my ID
+
+	for index, course := range courses {
+		if course.CourseId == params["id"] {
+			courses = append(courses[:index], courses[index+1:]...)
+			var course Course
+			_ = json.NewDecoder(r.Body).Decode(&course)
+			course.CourseId = params["id"]
+			courses = append(courses, course)
+			json.NewEncoder(w).Encode(course)
+			return
+		}
+	}
+	//TODO: send a responde when id is not found.
+}
+
+func deleteOneCours(w http.ResponseWriter, r http.Response) {
+
+}
