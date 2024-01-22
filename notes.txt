@@ -1,0 +1,115 @@
+-->Golang is compiled, JAVA is not a compiled language, it is in between, it gives some intermediate binaries and expects us to have the virtual machine installed called JVM.
+-->go tool can run file directly, without VM.
+-->Executables are different for OS
+
+-->WHAT IS GOLANG USED FOR?
+system apps to web apps
+it is already in production
+
+-->Don't bring baggage with this language, the purpose of making this languge was entirely different
+
+==>IS GO object orientee?
+YES AND NO
+-->it don't have classes, it have structs(structs are alternatives of classes)_.
+-->dont have overloading.
+
+==>lexer does a lot of work, it autocompletes our code.
+->What is the reason for language designers to even start working on getting rid of tokens like semicolons? The answer is quite simple. It’s all about readability. The less artefacts code has, the easier it’s to work with. It’s important since once written piece of code will be probably read many times by different people.
+
+Grammar uses semicolons as productions terminators. Since the goal is to free programmer from typing these semicolons, there must be a way to automatically inject them. This is what Go’s lexer is doing. Semicolon is added when line’s last token is one of:
+
+    an identifier
+    an integer, floating-point, imaginary, rune, or string literal
+    one of the keywords break, continue, fallthrough, or return
+    one of the operators and delimiters ++, --, ), ], or }
+
+fmt.Println --> P is capital in this, this Println function was exported publicaly for open use
+
+-->Variable should be known in advance.
+
+-->everything in golang is a type.
+
+==>TYPES:-
+STRING
+BOOL
+INTEGER --> uint8 uint64 int8 int64 uintptr (aliases are involved too)
+FLOATING --> float32 float64
+COMPLEX
+ARRAY
+SLICES
+MAPS
+STRUCTS
+POINTERS
+
+uint will have only non negative numbers. BUT int will have both positive and negative numbers.
+
+aliases --> Alias is a second name for an exising type and it's just like replacing all occurences of int1 with int.
+1. byte --> A byte takes 8 bits of storage. In Go, it is equivalent to the data type uint8. It is used to represent an ASCII character.
+
+2. rune --> A rune takes 4 bytes or 32 bits for storage. It is an int32 equivalent. Runes are used to represent the Unicode characters, which is a broader set than ASCII characters. These Unicode characters are encoded in the UTF-8 format. 
+
+==> %c is used to print character
+
+==>if we just initialise a type then it is assigned 0(for integer), it is not assigned a garbage value.
+
+-->inside a method walurus operator :=  can be used but not in the global scope
+
+TIME:- for formating the time in proper way, we need to use these values only
+fmt.Println(createdDate.Format("01-02-2006 Monday January 15.04.05"))
+
+==>Making executables for linux, windows, darwin.
+GOOS="darwin" go build
+GOOS="linux" go build
+GOOS="windows" go build
+
+MEMORY MANAGEMENT IN GO:
+==>memory allocation and deallocation happens automatically.
+new()
+allocate memory but no INIT
+you will get a memory address
+zeroed storage --> we can't put data inside it
+
+make()
+Allocate memory and INIT
+you will get a memory address
+non-zeroed storage --> we can put data inside it
+
+GARBAGE COLLECTION OVERVIEW:-
+
+1. The Go language takes responsibility for arranging the storage of Go values; in most cases, a Go developer need not care about where these values are stored, or why, if at all. In practice, however, these values often need to be stored in computer physical memory and physical memory is a finite resource. Because it is finite, memory must be managed carefully and recycled in order to avoid running out of it while executing a Go program. It's the job of a Go implementation to allocate and recycle memory as needed.
+
+2.Another term for automatically recycling memory is garbage collection. At a high level, a garbage collector (or GC, for short) is a system that recycles memory on behalf of the application by identifying which parts of memory are no longer needed. The Go standard toolchain provides a runtime library that ships with every application, and this runtime library includes a garbage collector.
+
+3.The GOGC variable sets the initial garbage collection target percentage. A collection is triggered when the ratio of freshly allocated data to live data remaining after the previous collection reaches this percentage. The default is GOGC=100. Setting GOGC=off disables the garbage collector entirely.  
+
+NPM --> node package manager --> we want to use the code written by someone on other side, then we need to use package manager
+chocolatey --> windows
+homebrew --> mac
+python --> pip installed
+
+Why it came into existence?
+-->let's say we want to create a file of users having unique identifier
+1.Download the code from github and configure it. 
+2.Set standards and use npm install --> we will follow this
+
+-->npm help -> don't use it instead use docs
+
+-->npm uses special tpye of versioning i.e semantic versioning.
+Code status	                                      Stage	          Rule	                                                            Example version
+1. First release	                            New product	    Start with 1.0.0	                                                 1.0.0
+2. Backward compatible bug fixes	            Patch release	Increment the third digit	                                         1.0.1
+3. Backward compatible new features	            Minor release	Increment the middle digit and reset last digit to zero	             1.1.0
+4. Changes that break backward compatibility	Major release	Increment the first digit and reset middle and last digits to zero	 2.0.0
+
+Concurrency:-
+A Central Processing Unit (CPU, or simply a processor) can work on only one task at a time. If multiple tasks are given to it, e.g., playing a song and writing code, it simply switches between these tasks. This switching is so fast and seamless that, for a user, it feels like multitasking.This capability of modern CPUs to pause and resume tasks so fast gives an illusion as if the tasks are running in parallel. However, this is not parallel. This is concurrent.
+
+Parallelism:-
+This is a type of computation in which multiple processors carry out many processes at the same time. To achieve this parallel processing, specialized programming is needed. This is known as parallel programming, where the code is written to utilize multiple CPU Cores. In this case, more than one process is actually executed in parallel.
+
+Concurrency is a fundamental aspect of Go programming that allows developers to write efficient and scalable applications. In Go, goroutines are a key feature for achieving concurrency. They enable the execution of functions concurrently, allowing multiple tasks to run simultaneously. In contrast, operating system (OS) threads are lower-level entities managed by the OS kernel. Understanding the differences between goroutines and threads is crucial for harnessing the full power of Go’s concurrency model.
+MUST REFER TO MEDIUM ARTICLE ON GOROUTINES AND THREADS
+
+
+NOTE:- donot communicate by sharing memeory; instead share memory by communicating.
+ 
